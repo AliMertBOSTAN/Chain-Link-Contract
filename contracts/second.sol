@@ -4,7 +4,7 @@ pragma solidity 0.8.18;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-abstract contract SeckondConract is Ownable, ERC721{
+abstract contract SecondConract is Ownable, ERC721{
     uint32 public tokenId;
     uint32 public mintAmounth;
     string public locationName;
