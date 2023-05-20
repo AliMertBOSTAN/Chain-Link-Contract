@@ -3,7 +3,7 @@ pragma solidity 0.8.18;
 
 import './second.sol';
 
-contract MainConract{
+contract MainConract is SecondConract{
     SecondConract public second;
 
     mapping(address => SecondConract) public nftContractlist; 
