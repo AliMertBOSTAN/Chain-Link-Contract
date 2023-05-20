@@ -6,26 +6,26 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 abstract contract SecondConract is Ownable, ERC721{
     uint32 public tokenId;
-    uint32 public mintAmounth;
+    uint32 public mintAmount;
     string public locationName;
     string public locationShort;
 
     struct LocationNFT{
         string locationName;
         uint32 id;
-        uint256 mintAmounth;
+        uint256 mintAmount;
     }
 
     constructor(
-        uint32 _mintAmounth,
+        uint32 _mintAmount,
         string memory _LocationName,
         string memory _LocationShort
     ) ERC721 (_LocationName, _LocationShort) {
 
-        require(_mintAmounth != 0, "Can not be 0");
+        require(_mintAmount != 0, "Can not be 0");
         bytes memory locationNamebytes = bytes(_LocationName);
         require(locationNamebytes.length != 0, "Can not be empty");
-        mintAmounth = _mintAmounth;
+        mintAmount = _mintAmount;
         locationName = _LocationName;
         locationShort = _LocationShort;
     }
@@ -33,7 +33,7 @@ abstract contract SecondConract is Ownable, ERC721{
     // mint() fonksiyonu belirli bir sınırda nft oluşuturup kullanıcının
     // kendisine nft oluşturmasına imkan veriyor
     function mint() public{
-        require(mintAmounth - tokenId != 0, 'Event ended');
+        require(mintAmount - tokenId != 0, 'Event ended');
         // NFT data eksik o yapılacak
         _safeMint(msg.sender, tokenId , nftdata);        
         tokenId = tokenId + 1;
@@ -41,7 +41,7 @@ abstract contract SecondConract is Ownable, ERC721{
 
     // kalan katılım hakkı gösteriliyor 
     function remainingNFT() public view returns (uint32 remain){
-        return (mintAmounth - tokenId);
+        return (mintAmount - tokenId);
     }
 
 
