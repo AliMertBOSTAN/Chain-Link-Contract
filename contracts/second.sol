@@ -35,7 +35,7 @@ abstract contract SecondConract is Ownable, ERC721{
     function mint() public{
         require(mintAmounth - tokenId != 0, 'Event ended');
         // NFT data eksik o yapılacak
-        _safeMint(msg.sender, tokenId );        
+        _safeMint(msg.sender, tokenId , nftdata);        
         tokenId = tokenId + 1;
     }
 
